@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
-
-const API_URL = 'http://localhost:5000/api';
+import { API_URL } from '../config/api';
 
 const CROP_OPTIONS = [
   'Apple', 'Bell Pepper', 'Blueberry', 'Cherry', 'Corn (Maize)',

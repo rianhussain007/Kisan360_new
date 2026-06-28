@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../hooks/useAuth';
 
-const API_URL = 'http://localhost:5000/api';
+import { API_URL } from '../config/api';
 
 const getToken = async (user: any): Promise<string | null> => {
   if (!user) return null;

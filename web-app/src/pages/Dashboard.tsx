@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const API_URL = 'http://localhost:5000/api';
+import { API_URL } from '../config/api';
 
 const Dashboard = () => {
   const [weather, setWeather] = useState<any>(null);

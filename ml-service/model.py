@@ -60,7 +60,7 @@ def predict(image: Image.Image) -> dict:
     # ---- Model-level prediction ----
     input_tensor = preprocess(image).unsqueeze(0).to(device)
     with torch.no_grad():
-        outputs = model(input_tensor)
+        outputs = model(pixel_values=input_tensor)
         logits = outputs.logits
         probs = F.softmax(logits, dim=1)
         top_prob, top_idx = torch.max(probs, 1)

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const API_URL = 'http://localhost:5000/api';
+import { API_URL } from '../config/api';
 const COMMON_CROPS = [
   'Rice', 'Wheat', 'Maize', 'Sugarcane', 'Cotton',
   'Groundnut', 'Tomato', 'Onion', 'Mango', 'Banana',
