@@ -21,6 +21,8 @@ def load_model():
     model.eval()
     id2label = model.config.id2label
     print(f"Model loaded. {len(id2label)} classes.")
+    print(f"Model input names: {getattr(model, 'model_input_names', ['pixel_values'])}")
+    print(f"Model main input: {getattr(model, 'main_input_name', 'pixel_values')}")
 
 load_model()
 
@@ -60,7 +62,8 @@ def predict(image: Image.Image) -> dict:
     # ---- Model-level prediction ----
     input_tensor = preprocess(image).unsqueeze(0).to(device)
     with torch.no_grad():
-        outputs = model(pixel_values=input_tensor)
+        input_name = getattr(model, 'main_input_name', 'pixel_values')
+        outputs = model(**{input_name: input_tensor})
         logits = outputs.logits
         probs = F.softmax(logits, dim=1)
         top_prob, top_idx = torch.max(probs, 1)
